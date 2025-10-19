@@ -67,9 +67,13 @@ We need to calculate the following figures:
 The code is
 ```
 monthly_expenses = pd.read_excel('https://docs.google.com/spreadsheets/d/10OGbaywwMIqKgnPGy8VDvpBVtjyqln47iYa2lFhI9Mw/export?format=xlsx') # extract data
+
 monthly_expenses_lastmonth = monthly_expenses[monthly_expenses['month'] == '2023-03-01'] # lọc chi phí của tháng 3
+
 monthly_expenses_lastmonth_saleforces = monthly_expenses_lastmonth[monthly_expenses_lastmonth['item'] == 'Salesforce'] # lọc từ bảng chi phí của tháng 3 nhưng chi phí liên quan tới bán hàng
+
 monthly_spending = monthly_expenses_lastmonth_saleforces['amount'].sum() # cộng tổng cộng amount trong bảng chi phí bán hàng tháng 3
+
 Print(monthly_spending) # in kết quả
 ```
 
