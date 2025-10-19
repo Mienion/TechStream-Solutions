@@ -68,11 +68,11 @@ The code is
 ```
 monthly_expenses = pd.read_excel('https://docs.google.com/spreadsheets/d/10OGbaywwMIqKgnPGy8VDvpBVtjyqln47iYa2lFhI9Mw/export?format=xlsx') # extract data
 
-monthly_expenses_lastmonth = monthly_expenses[monthly_expenses['month'] == '2023-03-01'] # lọc chi phí của tháng 3
+monthly_expenses_lastmonth = monthly_expenses[monthly_expenses['month'] == '2023-03-01'] # lọc dòng của tháng 3
 
-monthly_expenses_lastmonth_saleforces = monthly_expenses_lastmonth[monthly_expenses_lastmonth['item'] == 'Salesforce'] # lọc từ bảng chi phí của tháng 3 nhưng chi phí liên quan tới bán hàng
+monthly_expenses_lastmonth_saleforces = monthly_expenses_lastmonth[monthly_expenses_lastmonth['item'] == 'Salesforce'] # lọc từ bảng trên những chi phí liên quan tới bán hàng
 
-monthly_spending = monthly_expenses_lastmonth_saleforces['amount'].sum() # cộng tổng cộng amount trong bảng chi phí bán hàng tháng 3
+monthly_spending = monthly_expenses_lastmonth_saleforces['amount'].sum() # cộng tổng cột amount trong bảng chi phí bán hàng tháng 3
 
 Print(monthly_spending) # in kết quả
 ```
@@ -82,9 +82,13 @@ Print(monthly_spending) # in kết quả
 The code is
 ```
 payroll = pd.read_excel('https://docs.google.com/spreadsheets/d/1c_WihqTZCQvNgxzmd-OwhR9i5diwtfxXVLyMn8R-Lp4/export?format=xlsx') # extract data
-payroll_lastmonth = payroll[payroll['month'] == '2023-03-01'] # lọc chi phí của tháng 3
-payroll_lastmonth_sale_marketing = payroll_lastmonth[payroll_lastmonth['department'].isin(['Sale','Marketing'])] # lọc từ bảng chi phí của tháng 3 nhưng chi phí liên quan tới bán hàng và marketing
-payroll_spending = payroll_lastmonth_sale_marketing['paid'].sum() # cộng tổng cộng lương trả cho marketing và sale tháng 3
+
+payroll_lastmonth = payroll[payroll['month'] == '2023-03-01'] # lọc dòng của tháng 3
+
+payroll_lastmonth_sale_marketing = payroll_lastmonth[payroll_lastmonth['department'].isin(['Sale','Marketing'])] # lọc từ bảng chi phí trên nhưng chi phí liên quan tới bán hàng và marketing
+
+payroll_spending = payroll_lastmonth_sale_marketing['paid'].sum() # cộng tổng lương trả cho marketing và sale tháng 3
+
 Print(payroll_spending) # in kết quả
 ```
 ## 1.3 Marketing cost
@@ -92,8 +96,11 @@ Print(payroll_spending) # in kết quả
 The code is
 ```
 daily_marketing_spending = pd.read_excel('https://docs.google.com/spreadsheets/d/1AZOIThOV4P-0eYDge53ZwumVkfkHoYPWxst3k3Bv87c/export?format=xlsx') # extract data
+
 daily_marketing_cost = daily_marketing_spending[(daily_marketing_spending['date'].dt.month == 3) & (daily_marketing_spending['date'].dt.year = 2023)] # lọc dòng của tháng 3
+
 marketing_spending = daily_marketing_cost['spending'].sum() # cộng tổng chi phí marketing tháng 3
+
 Print(marketing_spending) # in kết quả
 ```
 
@@ -101,8 +108,11 @@ Print(marketing_spending) # in kết quả
 The code is
 ```
 receipts_history = pd.read_excel('https://docs.google.com/spreadsheets/d/1qayqML1zCKdmtzutkcy9LWvE6xFRm6TGBEVkHHJKIuE/export?format=xlsx') # extract data
+
 receipts_history_lastmonth = receipts_history[(receipts_history['date'].dt.month == 3) & (receipts_history['date'].dt.year = 2023)] # lọc dòng của tháng 3
+
 new_customer_lastmonth = receipts_history_lastmonth['new_customer'].sum() # cộng tổng cột new_customer
+
 Print(new_customer_lastmonth) # in kết quả
 ```
 ####   Here, we have
